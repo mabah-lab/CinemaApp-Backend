@@ -137,7 +137,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	public void initFilms() {
 		List<Categorie> cat = categorieRepository.findAll();
 		double [] durees= new double [] {1,1.5,2,2.5,3};
-		Stream.of("24h Chrono","Fast and Furious","iron Man","Transporter 2","Hell Driver").forEach(tf->{
+		Stream.of("24h Chrono","Fast and Furious","Iron Man","Transporter 2","Hell Driver").forEach(tf->{
 			Film film= new Film();
 			film.setTitre(tf);
 			film.setPhoto(tf.replaceAll(" ", "")+".jpg");
