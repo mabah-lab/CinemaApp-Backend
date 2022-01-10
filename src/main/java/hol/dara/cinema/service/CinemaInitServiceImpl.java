@@ -56,7 +56,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 
 	@Override
 	public void initVilles() {
-		Stream.of("Conakry","Labe","Kindia","Mamou","Faranah").forEach(nomVille->{
+		Stream.of("Bruxelles","Anvers","Liège","Paris","Lyon").forEach(nomVille->{
 			Ville ville= new Ville();
 			ville.setNom(nomVille);
 			villeRepository.save(ville);
@@ -67,7 +67,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
-			Stream.of("Le Range","Walli","Renaissance","La soucre").forEach(nomCine->{
+			Stream.of("Le Range","Walli","Renaissance","La source").forEach(nomCine->{
 				Cinema cine=new Cinema();
 				cine.setNom(nomCine);
 				cine.setVille(v);
@@ -84,7 +84,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 		cinemaRepository.findAll().forEach(c->{
 			for(int i=0;i<c.getNbreSalles();i++) {
 				Salle salle= new Salle();
-				salle.setNom("salle"+(i+1));
+				salle.setNom("salle "+(i+1));
 				salle.setNbrePlaces(10+(int)(Math.random()*15));
 				salle.setCinema(c);
 				salleRepository.save(salle);
@@ -110,7 +110,7 @@ public class CinemaInitServiceImpl implements ICinemaInitService {
 	@Override
 	public void initSeances() {
 		DateFormat datef = new SimpleDateFormat("HH:mm");
-		Stream.of("13:00","15:00","17:00","19:00","21:00","23:00").forEach(s->{
+		Stream.of("12:00","15:00","19:00","21:00","00:00").forEach(s->{
 			Seance seance=new Seance();
 			try {
 				seance.setHeureDebut(datef.parse(s));

@@ -35,7 +35,7 @@ public class CinemaRestController {
 	public byte[] images(@PathVariable(name = "id")Long id) throws Exception {
 		Film film= filmRepository.findById(id).get();
 		String photoName=film.getPhoto();
-		File fichier= new File(System.getProperty("user.home")+"/cinema/images/"+photoName);
+		File fichier= new File("src/images/"+photoName);
 		Path path= Paths.get(fichier.toURI());
 		return Files.readAllBytes(path);
 	}
